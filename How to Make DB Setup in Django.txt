@@ -1,0 +1,10 @@
+Open setting.py inside your project and Updtae this line in DATABASES
+
+django.db.backends.mysql
+
+and also add this
+
+'NAME': 'EmployeeDB',
+'USER': 'postgres',
+'PASSWORD': 'root',
+'HOST': 'localhost'

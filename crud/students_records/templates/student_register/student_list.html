@@ -1,0 +1,38 @@
+{% extends "student_register/base.html" %}
+
+{% block content %}
+{% include 'student_register/add_student_model.html' %}
+{% include 'student_register/add_section_model.html' %}
+<table id = "table" class="table table-borderless">
+    <thead class="border-bottom font-weight-bold">
+        <tr>
+            <td>#</td>
+            <td>Full Name</td>
+            <td>Roll No</td>
+            <td>Mobile</td>
+            <td>Section</td>
+            <td>Action</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for student in student_list %}
+            <tr>
+                <td>{{student.id}}</td>
+                <td><a href="#">{{student.fullname}}</a></td>
+                <td>{{student.roll_no}}</td>
+                <td>{{student.mobile}}</td>
+                <td>{{student.section_id}}</td>
+                <td>
+                    <a href="#" class="edit_student" data-id="{{student.id}}"><i class="fa fa-edit"></i></a> <a href="{% url 'delete_student' student.id  %}" onclick="return confirm('Are you sure you want to delete?')"><i class="fa fa-trash"></i></a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock content %}
+{% block jquery %}
+<script>
+    var edit_student_url="{% url 'edit_student' %}";
+</script>
+{% endblock jquery %}

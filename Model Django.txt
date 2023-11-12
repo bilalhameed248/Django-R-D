@@ -1,0 +1,23 @@
+Create Model in model.py 
+
+
+
+class Product(models.Model):
+	product_id=models.AutoField
+	product_name=models.CharField(max_length=255)
+	desc=models.TextField()
+	publish_date=models.DateField()
+
+
+
+
+python manage.py makemigrations
+
+python manage.py migrate
+
+Register Your Model In Admin.py of Your Application
+e.g
+from .models import Product
+admin.site.register(Product)
+
+

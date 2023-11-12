@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Halo</title>
+</head>
+<body>
+<form action="{% url 'analyse' %}" method="GET">
+	<h1>Enter Your Text To Process</h1>
+	<textarea required name="text" style="margin: 0px; width: 835px; height: 188px;"></textarea>
+	<br>
+	<input type="checkbox" name="removepun">Remove Punctuation
+	<br>
+	<input type="checkbox" name="capitalize">Uppercase
+	<br>
+	<input type="checkbox" name="newLineRemover">New Line Remover
+	<br>
+	<input type="checkbox" name="spaceremover">Space Remover
+	<br>
+	<input type="checkbox" name="extraspaceremover">Extra Space Remover
+	<br>
+	<button style="margin-top: 1%; width: 5%;" type="submit">Perform</button>
+</form>
+<h1>Learnig POST Request</h1>
+<form action="{% url 'analysePost' %}" method="POST">
+	{% csrf_token %}
+	<h1>Enter Your Text To Process</h1>
+	<textarea required name="text2" style="margin: 0px; width: 835px; height: 188px;"></textarea>
+	<br>
+	<input type="checkbox" name="removepun2">Remove Punctuation
+	<br>
+	<button style="margin-top: 1%; width: 5%;" type="submit">Perform</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,7 @@
+1) Create "static" folder in your app
+2) Add Bellow two line in setting.py
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+3) In Your template
+{% load static %}
+<script src="{% static 'jquery/student.js' %}"></script>

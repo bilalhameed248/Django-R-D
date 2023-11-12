@@ -1,0 +1,46 @@
+<div class="modal fade" id="add_student_model" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add New Student</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="{% url 'insert_student' %}" method="POST" autocomplete="on">
+        {%csrf_token%}
+        <div id="student_id_div">
+          
+        </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-lg-12">
+            <label>Enter Full Name</label>
+            <input type="text" name="fullname" id="fullname" placeholder="Enter Full Name" required class="form-control">
+          </div>
+          <div class="col-lg-6">
+            <label>Enter Roll No</label>
+            <input type="number" name="roll_no" id="roll_no" placeholder="Enter Roll No" required class="form-control">
+          </div>
+          <div class="col-lg-6">
+            <label>Enter Mobile Number</label>
+            <input type="number" name="mobile" id="mobile" placeholder="Enter Mobile Number" required class="form-control">
+          </div>
+          <div class="col-lg-12">
+            <label>Select Section</label>
+            <select class="form-control" name="section_id" id="section_id">
+              {% for section in section_list %}
+              <option value="{{section.id}}">{{section.section_title}}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Register</title>
+
+    {% include 'layout/css/style.html' %}
+    {% block css %}
+    {% endblock css %}
+</head>
+<body>
+    <div class="container">
+        <div class="offset-md-1 mt-5">
+            <div class="jumbotron">
+                <h1 class="display-4">Student Register</h1>
+                <p class="lead font-italic">Python Django Project To Implement Crud Operation Using MySql Database</p> <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#add_student_model"><i class="fa fa-plus"></i> Add Student</button>
+                <button style="width: auto; float: right;" class="btn btn-primary" data-toggle="modal" data-target="#add_section_model"><i class="fa fa-plus"></i> Add Section</button>
+                <hr class="my-4">
+                {% block content %}
+                {% endblock content %}
+            </div>
+        </div>
+    </div>
+    {% block jquery %}
+    {% endblock jquery %}
+    {% include 'layout/jquery/scripts.html' %}
+</body>
+</html>

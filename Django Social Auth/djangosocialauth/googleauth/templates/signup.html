@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="d-flex justify-content-center h-100">
+        <div class="card">
+            <div class="card-header">
+                <h3>Sign Up</h3>
+                <div class="d-flex justify-content-end social_icon">
+                    <span><a href="{% url 'facebook_login' %}"><i class="fab fa-facebook-square"></i></a></span>
+                    <span><a href="{% url 'google_login' %}"><i class="fab fa-google-plus-square"></i></a></span>
+                    <span><i class="fab fa-twitter-square"></i></span>
+                </div>
+            </div>
+            <div class="card-body">
+                <form action="" method="POST" enctype="multipart/form-data">
+                {%csrf_token%}
+                  <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                        </div>
+                        <input type="text" name="fullname" class="form-control" placeholder="Full Name" required>
+                    </div>
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-at"></i></span>
+                        </div>
+                        <input type="text" id="email" name="email" class="form-control" placeholder="Email" required>
+                    </div>
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                        </div>
+                        <input type="password" name="password" id="password" class="form-control" placeholder="password" required>
+                    </div>
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-key"></i></span>
+                        </div>
+                        <input type="password" name="conformpassword" id="confirm_password" class="form-control" placeholder="Conform Password" required>
+                    </div>
+                    <!-- Error Message -->
+                    <span id='message' style="float: right;"></span>
+                    {% if message %}
+                      <span class="errorMessage">{{ message }}</span>
+                    {% endif %}
+                    <!-- Error Message -->
+                    <div class="input-group form-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                        </div>
+                        <input type="Phone" name="phone" class="form-control" placeholder="Phone" required>
+                    </div>
+                    <div class="row align-items-center remember">
+                        <input type="checkbox">Remember Me
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Login" class="btn float-right login_btn">
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <div class="d-flex justify-content-center links">
+                    Already Have An Account?<a href="{% url 'home' %}">Sign In</a>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <a href="#">Forgot your password?</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $('#confirm_password').on('keyup', function()
+    {
+        if($('#password').val() == $('#confirm_password').val()) 
+        {
+            $('#message').html('Matching').css('color', 'white');
+        }
+        else 
+        {
+            $('#message').html('Not Matching').css('color', 'red');
+        }
+    });
+    $('#email').on('keyup', function()
+    {
+        var email=$('#email').val();
+        $.ajax({
+        url: "{% url 'emailvarification' %}",
+        type: 'POST',
+        data:{csrfmiddlewaretoken: '{{ csrf_token }}', 'email':email},
+        cache:false,
+        dataType: "json",
+        success: function(response) 
+        {
+            console.log(response);
+            alert ("response: "+response.email);
+        }
+    });
+    });
+</script>
+{% endblock %}

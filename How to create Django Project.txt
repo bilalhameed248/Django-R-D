@@ -1,0 +1,25 @@
+TO create Django project First run this Command:
+
+django-admin startproject mysite
+
+To Run your Project:
+
+python manage.py runserver
+
+But First you have to make migration
+
+python manage.py migrate
+
+Enter This command to Edit Project in VS code
+
+code .
+
+TO create app inside project run this command
+
+python manage.py startapp appname
+
+
+Open setting.py inside your project directory
+
+inert your appname in INSTALLED_APPS in ''
+

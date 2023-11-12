@@ -1,0 +1,76 @@
+1)
+
+pip install django-allauth
+
+2) add this setting.py
+
+AUTHENTICATION_BACKENDS = [
+    ...
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+    ...
+]
+
+3) add this to INSTALLED_APP setting.py
+
+'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+
+
+4)
+
+add this bellow DATABASE setting.py
+
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of 'allauth'
+    'django.contrib.auth.backends.ModelBackend',
+
+    # 'allauth' specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+
+5) Add this setting.py
+
+SITE_ID = 1
+
+
+6) add this to urls.py
+
+path('accounts/', include('allauth.urls')),
+
+
+7) Create Superuser
+python manage.py createsuperuser
+username admin/ownchoice
+password ownchoice
+
+localhost/admin
+
+
+8) Go to admin Home and select sie and set domain names
+
+9)go to developer.google.com
+
+10) developer.google.com/gmail/api/quickstart/js
+
+Click Enable The Gmail Button ANd note down detial
+
+781395259081-k6sd1mddh7ohmgbr5rff3pn2hpbq3eso.apps.googleusercontent.com
+
+7S9s7dN-R1tNwIEjY5g2y5l7
+
+
+11) Select QuickStart from developer.google.com and enter GMAIL API and go to credintial
+
+12) copy that credention to localhost/admin and paste it on yor app
+
+13) https://django-allauth.readthedocs.io/en/latest/configuration.html
+
+14) 

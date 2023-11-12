@@ -1,0 +1,30 @@
+django-admin startproject employee_project
+cd employee_project
+code . // command to open project in vs code
+python manange.py runserver //to run the website
+we can build diff app inside one django project so we will create here our first application 
+python manage.py startapp employee_register
+
+
+
+python manage.py migrate
+
+//After creating new tables enter this commands
+python manage.py makemigrations employee_register
+
+//after this
+python manage.py sqlmigrate employee_register 0001 //app_name and then migration file name 
+
+python manage.py migrate
+
+pip install django-cryspy-forms
+
+
+
+import os.path
+PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
+...
+MEDIA_ROOT = os.path.join(PROJECT_PATH, 'media/')
+TEMPLATE_DIRS = [
+    os.path.join(PROJECT_PATH, 'templates/'),
+]
